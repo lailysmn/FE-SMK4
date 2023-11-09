@@ -40,14 +40,6 @@ function Header() {
   return <h1>Catatan Belanjaku 📝</h1>;
 }
 
-function footer() {
-  return (
-    <footer className="stats">
-      Ada 10 barang di daftar belanjaan, 5 barang sudah dibeli (50%)
-    </footer>
-  );
-}
-
 function Form() {
   return (
     <form className="add-form">
@@ -73,14 +65,7 @@ function Grocey() {
       <div className="list">
         <ul>
           {groceyItems.map((item) => (
-            <li key={item.id}>
-              <input type="checkbox" checked={item.checked} />
-              <span style={item.checked ? { textDecoration: "line-through" } : {}}>
-                
-                {item.quantity} {item.name}
-              </span>
-              <button>&times;</button>
-            </li>
+            <Item item={item} key={item.id} />
           ))}
         </ul>
       </div>
@@ -93,5 +78,24 @@ function Grocey() {
         <button>Bersihkan Daftar</button>
       </div>
     </>
+  );
+}
+function Item({ item }) {
+  return (
+    <li key={item.id}>
+      <input type="checkbox" />
+      <span style={item.checked ? { textDecoration: "line-through" } : {}}>
+        {item.quantity} {item.name}
+      </span>
+      <button>&times;</button>
+    </li>
+  );
+}
+
+function footer() {
+  return (
+    <footer className="stats">
+      Ada 10 barang di daftar belanjaan, 5 barang sudah dibeli (50%)
+    </footer>
   );
 }
