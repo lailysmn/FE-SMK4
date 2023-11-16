@@ -159,6 +159,9 @@ function Item({ item, onDeleteItem, onToggleItem }) {
 }
 
 function footer({ items }) {
+  if(items.length === 0) return  <footer className="stats">Daftar belanjaan masih kosong!
+
+  </footer>
 
   const totalItems = items.length;
   const checkedItems = items.filter((item) => item.checked).length;
